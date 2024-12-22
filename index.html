@@ -9,6 +9,7 @@
         padding: 0;
         background-color: #000; /* Black background */
         color: white; /* White text for visibility */
+        transition: background-color 0.3s, color 0.3s;
     }
 
     header {
@@ -19,20 +20,29 @@
         color: white;
     }
 
+    .scroll-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
     .iphone-box {
         background-color: #1a1a1a; /* Light black (dark gray) */
         border: 1px solid #333; /* Slightly lighter border */
         border-radius: 10px;
         padding: 1.5rem;
-        margin: 2rem auto;
-        width: 80%;
+        min-width: 300px;
+        flex: 0 0 auto;
         box-shadow: 0 4px 6px rgba(71, 100, 163, 0.5);
         color: white; /* Ensure text contrast */
-        transition: box-shadow 0.3s ease-in;
+        transition: box-shadow 0.3s ease-in, transform 0.3s ease-in;
     }
 
     .iphone-box:hover {
         box-shadow: 0 0 15px 5px #007bff; /* Light blue glow effect */
+        transform: scale(1.05);
     }
 
     .iphone-box h2 {
@@ -68,137 +78,213 @@
         font-size: 1rem;
         cursor: pointer;
         border-radius: 5px;
-        opacity: 50%;
+        opacity: 0.8;
+        transition: opacity 0.3s, transform 0.3s;
     }
 
     .contact-section button:hover {
-        opacity: 100%;
+        opacity: 1;
+        transform: translateY(-2px);
     }
-  
+    
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 1000;
+    }
+
+    .scroll-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .scroll-buttons button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        opacity: 0.8;
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .scroll-buttons button:hover {
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .iphone-box {
+            min-width: 250px;
+        }
+
+        header {
+            font-size: 1.5rem;
+        }
+
+        .contact-section button, .scroll-buttons button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .iphone-box {
+            min-width: 200px;
+        }
+
+        header {
+            font-size: 1.2rem;
+        }
+
+        .contact-section button, .scroll-buttons button {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+        }
+    }
 </style>
 </head>
 <body>
 
 <header>Orifha's iPhones</header>
 
-<div class="iphone-box">
-    <h2>Get The iPhone 16 from Just 18k</h2>
-    <video autoplay loop muted>
-        <source src="Video/iPhone 16 Reveal (4K) 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2556 x 1179 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A18 chip with enhanced performance</li>
-        <li><strong>Camera:</strong> 48 MP Main sensor, Ultra-Wide and Telephoto lenses</li>
-        <li><strong>Battery Life:</strong> Up to 33 hours of video playback</li>
-        <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
-        <li><strong>Operating System:</strong> iOS 18</li>
-        <li><strong>Water Resistance:</strong> IP68 rating</li>
-        <li><strong>Charging:</strong> USB-C, MagSafe and Qi wireless charging</li>
-    </ul>
+<button class="theme-toggle">Toggle Theme</button>
+
+<div class="scroll-buttons">
+    <button onclick="scrollLeft()">&#9664; Previous</button>
+    <button onclick="scrollRight()">Next &#9654;</button>
 </div>
 
-<div class="iphone-box">
-    <h2>Get The iPhone 15 from Just 16k</h2>
-    <video autoplay loop muted>
-        <source src="Video/iPhone 15 Reveal (4K) 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2556 x 1179 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A16 Bionic chip with 5-core GPU</li>
-        <li><strong>Camera:</strong> 48 MP Main sensor, Ultra-Wide lens</li>
-        <li><strong>Battery Life:</strong> Comparable to iPhone 14</li>
-        <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
-        <li><strong>Operating System:</strong> iOS 17</li>
-        <li><strong>Water Resistance:</strong> IP68 rating</li>
-        <li><strong>Charging:</strong> USB-C, MagSafe and Qi wireless charging</li>
-    </ul>
-</div>
-<div class="iphone-box">
-    <h2>Get The iPhone 14 from Just 13k</h2>
-    <video autoplay loop muted>
-        <source src="Video/iPhone 14 & 14 Plus Reveal (4K) 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2532 x 1170 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A15 Bionic chip with 5-core GPU</li>
-        <li><strong>Camera:</strong> Dual 12 MP system: Main (f/1.5) and Ultra-Wide (f/2.4) lenses</li>
-        <li><strong>Battery Life:</strong> Up to 20 hours of video playback</li>
-        <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
-        <li><strong>Operating System:</strong> iOS 16, upgradeable to iOS 17</li>
-        <li><strong>Water Resistance:</strong> IP68 rating</li>
-        <li><strong>Charging:</strong> MagSafe and Qi wireless charging; Lightning connector</li>
-    </ul>
-</div>
+<div class="scroll-container">
+    <div class="iphone-box">
+        <h2>Get The iPhone 16 from Just 18k</h2>
+        <video autoplay loop muted>
+            <source src="Video/iPhone 16 Reveal (4K) 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2556 x 1179 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A18 chip with enhanced performance</li>
+            <li><strong>Camera:</strong> 48 MP Main sensor, Ultra-Wide and Telephoto lenses</li>
+            <li><strong>Battery Life:</strong> Up to 33 hours of video playback</li>
+            <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
+            <li><strong>Operating System:</strong> iOS 18</li>
+            <li><strong>Water Resistance:</strong> IP68 rating</li>
+            <li><strong>Charging:</strong> USB-C, MagSafe and Qi wireless charging</li>
+        </ul>
+    </div>
 
+    <div class="iphone-box">
+        <h2>Get The iPhone 15 from Just 16k</h2>
+        <video autoplay loop muted>
+            <source src="Video/iPhone 15 Reveal (4K) 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2556 x 1179 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A16 Bionic chip with 5-core GPU</li>
+            <li><strong>Camera:</strong> 48 MP Main sensor, Ultra-Wide lens</li>
+            <li><strong>Battery Life:</strong> Comparable to iPhone 14</li>
+            <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
+            <li><strong>Operating System:</strong> iOS 17</li>
+            <li><strong>Water Resistance:</strong> IP68 rating</li>
+            <li><strong>Charging:</strong> USB-C, MagSafe and Qi wireless charging</li>
+        </ul>
+    </div>
 
-<div class="iphone-box">
-    <h2>Get The iPhone 13 from Just 10k</h2>
-    <video autoplay loop muted>
-        <source src="Video/iPhone 13 - official trailer 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2532 x 1170 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A15 Bionic chip with 4-core GPU</li>
-        <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.6) and Ultra-Wide (f/2.4) lenses</li>
-        <li><strong>Battery Life:</strong> Up to 19 hours of video playback</li>
-        <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
-        <li><strong>Operating System:</strong> iOS 15, upgradeable to iOS 17</li>
-        <li><strong>Water Resistance:</strong> IP68 rating</li>
-        <li><strong>Charging:</strong> MagSafe and Qi wireless charging; Lightning connector</li>
-    </ul>
-</div>
+    <div class="iphone-box">
+        <h2>Get The iPhone 14 from Just 13k</h2>
+        <video autoplay loop muted>
+            <source src="Video/iPhone 14 & 14 Plus Reveal (4K) 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2532 x 1170 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A15 Bionic chip with 5-core GPU</li>
+            <li><strong>Camera:</strong> Dual 12 MP system: Main (f/1.5) and Ultra-Wide (f/2.4) lenses</li>
+            <li><strong>Battery Life:</strong> Up to 20 hours of video playback</li>
+            <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
+            <li><strong>Operating System:</strong> iOS 16, upgradeable to iOS 17</li>
+            <li><strong>Water Resistance:</strong> IP68 rating</li>
+            <li><strong>Charging:</strong> MagSafe and Qi wireless charging; Lightning connector</li>
+        </ul>
+    </div>
 
-<div class="iphone-box">
-    <h2>Get The iPhone 12 from Just 8.5k</h2>
-    <video autoplay loop muted>
-        <source src="Video/IPhone 12 - Trailer 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2532 x 1170 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A14 Bionic chip with 4-core GPU</li>
-        <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.6) and Ultra-Wide (f/2.4) lenses</li>
-        <li><strong>Battery Life:</strong> Up to 17 hours of video playback</li>
-        <li><strong>Storage Options:</strong> 64GB, 128GB, 256GB</li>
-        <li><strong>Operating System:</strong> iOS 14, upgradeable to iOS 17</li>
-        <li><strong>Water Resistance:</strong> IP68 rating</li>
-        <li><strong>Charging:</strong> MagSafe and Qi wireless charging; Lightning connector</li>
-    </ul>
-</div>
+    <div class="iphone-box">
+        <h2>Get The iPhone 13 from Just 10k</h2>
+        <video autoplay loop muted>
+            <source src="Video/iPhone 13 - official trailer 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2532 x 1170 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A15 Bionic chip with 4-core GPU</li>
+            <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.6) and Ultra-Wide (f/2.4) lenses</li>
+            <li><strong>Battery Life:</strong> Up to 19 hours of video playback</li>
+            <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
+            <li><strong>Operating System:</strong> iOS 15, upgradeable to iOS 17</li>
+            <li><strong>Water Resistance:</strong> IP68 rating</li>
+            <li><strong>Charging:</strong> MagSafe and Qi wireless charging; Lightning connector</li>
+        </ul>
+    </div>
 
-<div class="iphone-box">
-    <h2>Get The iPhone 11 from Just 7k</h2>
-    <video autoplay loop muted>
-        <source src="Video/iPhone 11 and iPhone 11 Pro - Reveal 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 6.1-inch Liquid Retina LCD (1792 x 828 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A13 Bionic chip with 4-core GPU</li>
-        <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.8) and Ultra-Wide (f/2.4) lenses</li>
-        <li><strong>Battery Life:</strong> Up to 17 hours of video playback</li>
-        <li><strong>Storage Options:</strong> 64GB, 128GB, 256GB</li>
-        <li><strong>Operating System:</strong> iOS 13, upgradeable to iOS 17</li>
-        <li><strong>Water Resistance:</strong> IP68 rating</li>
-        <li><strong>Charging:</strong> Qi wireless charging; Lightning connector</li>
-    </ul>
-</div>
-<div class="iphone-box">
-    <h2>Get The iPhone X from Just 4.5k</h2>
-    <video autoplay loop muted>
-        <source src="Video/iPhone X Trailer Oficial 720.mp4">
-    </video>
-    <ul>
-        <li><strong>Display:</strong> 5.8-inch Super Retina OLED (2436 x 1125 resolution, 60Hz refresh rate)</li>
-        <li><strong>Processor:</strong> A11 Bionic chip with Neural Engine</li>
-        <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.8) and Telephoto (f/2.4) lenses</li>
-        <li><strong>Battery Life:</strong> Up to 13 hours of video playback</li>
-        <li><strong>Storage Options:</strong> 64GB, 256GB</li>
-        <li><strong>Operating System:</strong> iOS 11, upgradeable to iOS 16</li>
-        <li><strong>Water Resistance:</strong> IP67 rating</li>
-        <li><strong>Charging:</strong> Qi wireless charging; Lightning connector</li>
-    </ul>
-</div>
+    <div class="iphone-box">
+        <h2>Get The iPhone 12 from Just 8.5k</h2>
+        <video autoplay loop muted>
+            <source src="Video/IPhone 12 - Trailer 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 6.1-inch Super Retina XDR OLED (2532 x 1170 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A14 Bionic chip with 4-core GPU</li>
+            <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.6) and Ultra-Wide (f/2.4) lenses</li>
+            <li><strong>Battery Life:</strong> Up to 17 hours of video playback</li>
+            <li><strong>Storage Options:</strong> 64GB, 128GB, 256GB</li>
+            <li><strong>Operating System:</strong> iOS 14, upgradeable to iOS 17</li>
+            <li><strong>Water Resistance:</strong> IP68 rating</li>
+            <li><strong>Charging:</strong> MagSafe and Qi wireless charging; Lightning connector</li>
+        </ul>
+    </div>
 
+    <div class="iphone-box">
+        <h2>Get The iPhone 11 from Just 7k</h2>
+        <video autoplay loop muted>
+            <source src="Video/iPhone 11 and iPhone 11 Pro - Reveal 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 6.1-inch Liquid Retina LCD (1792 x 828 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A13 Bionic chip with 4-core GPU</li>
+            <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.8) and Ultra-Wide (f/2.4) lenses</li>
+            <li><strong>Battery Life:</strong> Up to 17 hours of video playback</li>
+            <li><strong>Storage Options:</strong> 64GB, 128GB, 256GB</li>
+            <li><strong>Operating System:</strong> iOS 13, upgradeable to iOS 17</li>
+            <li><strong>Water Resistance:</strong> IP68 rating</li>
+            <li><strong>Charging:</strong> Qi wireless charging; Lightning connector</li>
+        </ul>
+    </div>
+
+    <div class="iphone-box">
+        <h2>Get The iPhone X from Just 4.5k</h2>
+        <video autoplay loop muted>
+            <source src="Video/iPhone X Trailer Oficial 720.mp4">
+        </video>
+        <ul>
+            <li><strong>Display:</strong> 5.8-inch Super Retina OLED (2436 x 1125 resolution, 60Hz refresh rate)</li>
+            <li><strong>Processor:</strong> A11 Bionic chip with Neural Engine</li>
+            <li><strong>Camera:</strong> Dual 12 MP system: Wide (f/1.8) and Telephoto (f/2.4) lenses</li>
+            <li><strong>Battery Life:</strong> Up to 13 hours of video playback</li>
+            <li><strong>Storage Options:</strong> 64GB, 256GB</li>
+            <li><strong>Operating System:</strong> iOS 11, upgradeable to iOS 16</li>
+            <li><strong>Water Resistance:</strong> IP67 rating</li>
+            <li><strong>Charging:</strong> Qi wireless charging; Lightning connector</li>
+        </ul>
+    </div>
+</div>
 
 <div class="contact-section">
     <a href="mailto:orifha.netsianda1@icloud.com" title="Send an email to the seller">
@@ -207,25 +293,64 @@
     <br>
     <br>
     <a href="https://wa.me/27682054245?text=Hello%2C%20I%20would%20like%20more%20information%20about%20your%20iPhones." target="_blank"
-    title ="Takes you to the whatsapp page"
-
-    
-    >
-
-        <button class="button"
-        style="background-color:teal;">Contact us [whatsapp]</button>
+    title="Takes you to the WhatsApp page">
+        <button class="button" style="background-color: teal;">Contact us [WhatsApp]</button>
     </a>
- 
 </div>
-
-    
-
-
 
 <!-- Disclaimer Section -->
 <p style="text-align: center; margin-top: 2rem;">
     <strong>Disclaimer:</strong> The information provided on this website is for general informational purposes only. We do not guarantee the accuracy, completeness, or reliability of any information on this site. Use this website at your own risk. For more details, read our <a href="terms.html">Terms of Service</a> and Privacy Policy.
 </p>
+
+<script>
+    const themeToggleButton = document.querySelector('.theme-toggle');
+    themeToggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+    });
+
+    document.body.classList.toggle('light-theme');
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            .light-theme {
+                background-color: #fff;
+                color: #000;
+            }
+
+            .light-theme .iphone-box {
+                background-color: #f9f9f9;
+                color: #000;
+                border: 1px solid #ddd;
+            }
+
+            .light-theme header, .light-theme .theme-toggle {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+            .light-theme .contact-section button, .light-theme .scroll-buttons button {
+                background-color: #007bff;
+                color: #fff;
+            }
+        </style>
+    `);
+
+    function scrollLeft() {
+        document.querySelector('.scroll-container').scrollBy({
+            top: 0,
+            left: -300,
+            behavior: 'smooth'
+        });
+    }
+
+    function scrollRight() {
+        document.querySelector('.scroll-container').scrollBy({
+            top: 0,
+            left: 300,
+            behavior: 'smooth'
+        });
+    }
+</script>
 
 </body>
 </html>
