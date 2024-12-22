@@ -1,0 +1,44 @@
+#B1{
+    background-color: black;
+    color: white;
+
+}
+#p1{
+    font-family: monospace;
+    font-size: xx-large;
+    font-style: italic;
+}
+#vid1{
+    width: 100%;
+    background-color: black;
+    
+
+}
+header{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 80px;
+    text-align: center;
+    
+}
+#p2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    ;
+    font-size: large;
+
+}
+#b1{
+    border-radius: 20px;
+  
+    border-color: darkcyan;
+    background-color: white;
+}
+#b1:hover{
+    border-color: darkcyan;
+    background-color: darkcyan;
+    color :white;
+}
+#i1{
+    font-weight: 500;
+    font-size: medium;
+}
+
